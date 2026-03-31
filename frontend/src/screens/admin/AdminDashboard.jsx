@@ -6,7 +6,7 @@ import {
   TrendingUp, Clock, AlertTriangle, PieChart, CalendarClock, CheckCircle2
 } from 'lucide-react';
 import api from '../../api/axios';
-import { mockAuditLogs } from '../../data/mockData';
+
 import { StatCard, StatusBadge } from '../../components/UI';
 
 export default function AdminDashboard() {

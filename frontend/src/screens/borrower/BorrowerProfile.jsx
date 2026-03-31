@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import { mockBorrowers } from '../../data/mockData';
-import { RiskBadge, Btn, PageHeader } from '../../components/UI';
+import { Btn, PageHeader } from '../../components/UI';
 import Modal from '../../components/Modal';
 import { LogOut, Phone, UserCheck, Shield, Calendar, Edit3, Lock, Camera, Upload, Gift } from 'lucide-react';
 import { THEME } from '../../theme';
@@ -10,7 +9,6 @@ import { THEME } from '../../theme';
 export default function BorrowerProfile() {
   const { user, logout } = useAuth();
   const navigate         = useNavigate();
-  const borrowerData     = mockBorrowers.find(b => b.nrc === user?.nrc);
   const [toastMsg, setToastMsg] = useState('');
   const [editModal, setEditModal] = useState(false);
   const [form, setForm] = useState({
@@ -49,13 +47,12 @@ export default function BorrowerProfile() {
             </label>
           </div>
           <h2 className="text-xl font-bold text-white">{user?.name}</h2>
-          {borrowerData && <div className="mt-1.5"><RiskBadge risk={borrowerData.risk} /></div>}
 
           <div className="mt-5 space-y-3">
             {[
               { icon: Phone,     label: 'Phone',         value: user?.phone },
-              { icon: UserCheck, label: 'NRC Number',    value: user?.nrc || borrowerData?.nrc || '—' },
-              { icon: Calendar,  label: 'Date of Birth', value: borrowerData?.dob || '—' },
+              { icon: UserCheck, label: 'NRC Number',    value: user?.nrc || '—' },
+              { icon: Calendar,  label: 'Date of Birth', value: user?.dob || '—' },
               { icon: Shield,    label: 'Account Type',  value: 'Borrower' },
             ].map(({ icon: Icon, label, value }) => (
               <div key={label} className="flex items-center gap-3 p-3 bg-[#0d1117] rounded-xl">
@@ -141,27 +138,7 @@ export default function BorrowerProfile() {
         </label>
       </div>
 
-      {/* Credit Info */}
-      {borrowerData && (
-        <div className="bg-[#161b22] rounded-2xl border border-gray-100 shadow-sm p-4 space-y-3">
-          <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider">Credit Summary</h3>
-          <div className="grid grid-cols-3 gap-3">
-            {[
-              { label: 'Total Loans', value: borrowerData.totalLoans },
-              { label: 'Defaults',    value: borrowerData.totalDefaults, danger: borrowerData.totalDefaults > 0 },
-              { label: 'Active Def.', value: borrowerData.activeDefaults, danger: borrowerData.activeDefaults > 0 },
-            ].map(({ label, value, danger }) => (
-              <div key={label} className={`rounded-xl p-3 text-center ${danger && value > 0 ? 'bg-red-50' : 'bg-[#0d1117]'}`}>
-                <p className={`text-xl font-bold ${danger && value > 0 ? 'text-red-600' : 'text-gray-800'}`}>{value}</p>
-                <p className="text-[10px] font-bold text-gray-400 mt-0.5">{label}</p>
-              </div>
-            ))}
-          </div>
-          <p className="text-xs text-gray-400 text-center">
-            Risk data is shared with lenders on the LendaNet network.
-          </p>
-        </div>
-      )}
+      {/* Credit Info - loaded from API */}
 
       <div className="flex justify-center pt-2">
         <button onClick={handleLogout}

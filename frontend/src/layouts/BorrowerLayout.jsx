@@ -148,7 +148,7 @@ export default function BorrowerLayout() {
               <input 
                 type="text" 
                 placeholder="Search Records..." 
-                onKeyDown={(e) => e.key === 'Enter' && alert(`SEARCHING RECORODS: Query "${e.target.value}" submitted to network registry.`)}
+                onKeyDown={(e) => e.key === 'Enter' && e.preventDefault()}
                 className="pl-11 pr-4 py-3 bg-[#0d1117] border border-[#30363d] rounded-2xl text-[10px] font-bold uppercase tracking-wider text-[#e6edf3] placeholder:text-[#6e7681] focus:border-blue-600 focus:bg-[#1c2128] outline-none w-full transition-all shadow-sm cursor-text"
               />
             </div>

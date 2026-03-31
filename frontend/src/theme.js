@@ -81,43 +81,4 @@ export const THEME = {
   },
 };
 
-export const DEMO_CREDENTIALS = [
-  {
-    role: 'admin',
-    name: 'System Admin',
-    phone: '0000000001',
-    email: 'admin@lendanet.com',
-    password: 'password123',
-    initials: 'SA',
-    verificationStatus: 'verified'
-  },
-  {
-    role: 'staff',
-    name: 'Global Node',
-    phone: '0000000002',
-    email: 'staff@lendanet.com',
-    password: 'password123',
-    initials: 'GN',
-    verificationStatus: 'verified'
-  },
-  {
-    role: 'borrower',
-    name: 'David Zulu',
-    phone: '0000000003',
-    email: 'borrower@lendanet.com',
-    password: 'password123',
-    initials: 'DZ',
-    verificationStatus: 'verified',
-    idScanUrl: 'https://example.com/id.jpg'
-  },
-  {
-    role: 'agent',
-    name: 'Alice Agent',
-    phone: '0000000004',
-    email: 'agent@lendanet.com',
-    password: 'password123',
-    initials: 'AA',
-    verificationStatus: 'verified'
-  },
-];
 

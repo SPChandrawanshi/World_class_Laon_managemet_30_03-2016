@@ -26,7 +26,7 @@ import {
   TrendingDown,
   Radar
 } from 'lucide-react';
-import { mockLoans } from '../../data/mockData';
+import api from '../../api/axios';
 import { StatusBadge, PageHeader } from '../../components/UI';
 import Modal from '../../components/Modal';
 

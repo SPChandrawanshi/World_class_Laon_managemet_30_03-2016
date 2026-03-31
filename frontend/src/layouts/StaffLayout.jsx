@@ -10,12 +10,11 @@ import { useAuth } from '../context/AuthContext';
 import { THEME } from '../theme';
 
 const NAV = [
-  { path: '/staff/dashboard', label: 'Dashboard', icon: LayoutDashboard, detail: "Today's work" },
-  { path: '/staff/loans', label: 'Loans', icon: CreditCard, detail: 'Check requests' },
-  { path: '/staff/borrowers', label: 'Borrowers', icon: Users, detail: 'Client list' },
-  { path: '/staff/payments', label: 'Payments', icon: DollarSign, detail: 'Verify' },
-  { path: '/staff/calendar', label: 'Calendar', icon: Calendar, detail: 'Due list' },
-  { path: '/staff/notifications', label: 'Notifications', icon: Bell, detail: 'SMS logs' },
+  { path: '/staff/dashboard', label: 'Dashboard', icon: LayoutDashboard, detail: 'Overview' },
+  { path: '/staff/loans', label: 'Loans', icon: CreditCard, detail: 'Manage loans' },
+  { path: '/staff/borrowers', label: 'Borrowers', icon: Users, detail: 'Borrower list' },
+  { path: '/staff/payments', label: 'Payments', icon: DollarSign, detail: 'Verify payments' },
+  { path: '/staff/notifications', label: 'Notifications', icon: Bell, detail: 'Alerts' },
 ];
 
 const C = THEME.role.staff;
@@ -155,7 +154,7 @@ export default function StaffLayout() {
               <input 
                 type="text" 
                 placeholder="Search Records..." 
-                onKeyDown={(e) => e.key === 'Enter' && alert(`SEARCHING RECORODS: Query "${e.target.value}" submitted to network registry.`)}
+                onKeyDown={(e) => e.key === 'Enter' && e.preventDefault()}
                 className="pl-11 pr-4 py-3 bg-[#0d1117] border border-[#30363d] rounded-2xl text-[10px] font-bold uppercase tracking-wider text-[#e6edf3] placeholder:text-[#6e7681] focus:border-blue-600 focus:bg-[#1c2128] outline-none w-full transition-all shadow-sm cursor-text"
               />
             </div>

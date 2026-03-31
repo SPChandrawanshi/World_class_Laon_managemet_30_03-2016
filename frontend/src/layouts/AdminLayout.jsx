@@ -10,17 +10,16 @@ import { useAuth } from '../context/AuthContext';
 import { THEME } from '../theme';
 
 const NAV = [
-  { path: '/admin/dashboard', label: 'Dashboard', icon: LayoutDashboard, detail: 'Network Overview' },
-  { path: '/admin/staff', label: 'Nodes / Staff', icon: Briefcase, detail: 'Partner Registry' },
-  { path: '/admin/borrowers', label: 'Borrowers', icon: Users, detail: 'Client Ledger' },
-  { path: '/admin/loans', label: 'Loans', icon: CreditCard, detail: 'Asset Management' },
-  { path: '/admin/payments', label: 'Payments', icon: DollarSign, detail: 'Global Treasury' },
-  { path: '/admin/calendar', label: 'Calendar', icon: Calendar, detail: 'Due Windows' },
-  { path: '/admin/commission', label: 'Commission', icon: Target, detail: 'Yield Tracking' },
-  { path: '/admin/collateral', label: 'Collateral', icon: Image, detail: 'Document Registry' },
-  { path: '/admin/notifications', label: 'Notifications', icon: Bell, detail: 'Message Nodes' },
-  { path: '/admin/settings', label: 'Settings', icon: Sliders, detail: 'System Config' },
-  { path: '/admin/admins', label: 'System Control', icon: Shield, detail: 'Governance' },
+  { path: '/admin/dashboard', label: 'Dashboard', icon: LayoutDashboard, detail: 'Overview' },
+  { path: '/admin/staff', label: 'Staff', icon: Briefcase, detail: 'Manage staff' },
+  { path: '/admin/borrowers', label: 'Borrowers', icon: Users, detail: 'Manage borrowers' },
+  { path: '/admin/loans', label: 'Loans', icon: CreditCard, detail: 'Manage loans' },
+  { path: '/admin/payments', label: 'Payments', icon: DollarSign, detail: 'Payment records' },
+  { path: '/admin/defaults', label: 'Defaults', icon: Shield, detail: 'Overdue loans' },
+  { path: '/admin/collateral', label: 'Collateral', icon: Image, detail: 'Documents' },
+  { path: '/admin/notifications', label: 'Notifications', icon: Bell, detail: 'Alerts' },
+  { path: '/admin/settings', label: 'Settings', icon: Sliders, detail: 'Configuration' },
+  { path: '/admin/admins', label: 'Admins', icon: Shield, detail: 'Admin accounts' },
 ];
 
 const C = THEME.role.admin;
@@ -70,7 +69,7 @@ export default function AdminLayout() {
           </div>
           <div className="min-w-0">
             <p className="text-[#e6edf3] text-xs font-bold uppercase tracking-tight truncate">{user?.name}</p>
-            <p className="text-[#8b949e] text-[9px] font-bold uppercase tracking-wider">Super Control</p>
+            <p className="text-[#8b949e] text-[9px] font-bold uppercase tracking-wider">Admin</p>
           </div>
         </div>
       )}
@@ -161,7 +160,7 @@ export default function AdminLayout() {
               <input 
                 type="text" 
                 placeholder="Search Records..." 
-                onKeyDown={(e) => e.key === 'Enter' && alert(`SEARCHING RECORODS: Query "${e.target.value}" submitted to network registry.`)}
+                onKeyDown={(e) => e.key === 'Enter' && e.preventDefault()}
                 className="pl-11 pr-4 py-3 bg-[#0d1117] border border-[#30363d] rounded-2xl text-[10px] font-bold uppercase tracking-wider text-[#e6edf3] placeholder:text-[#6e7681] focus:border-blue-600 focus:bg-[#1c2128] outline-none w-full transition-all shadow-sm cursor-text"
               />
             </div>
