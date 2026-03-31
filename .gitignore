@@ -3,6 +3,9 @@ node_modules/
 .npm
 .yarn
 
+# Requirements
+client requirement/
+
 # Backend
 backend/.env
 backend/prisma/dev.db
