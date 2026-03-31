@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+/* ── Base Styles ── */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  :root {
+    /* DARK TERMINAL THEME */
+    --background: #0d1117;
+    --surface: #161b22;
+    --border: #30363d;
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --text-primary: #e6edf3;
+    --text-secondary: #8b949e;
+    --text-muted: #6e7681;
+
+    --radius-xl: 1.5rem;
+    --radius-2xl: 2rem;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
+  }
+
+  html {
+    -webkit-tap-highlight-color: transparent;
+    font-size: 14px;
+    
+  }
+
+  @media (min-width: 768px) {
+    html { font-size: 16px; }
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--background);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overscroll-behavior: none;
+    line-height: 1.5;
+  }
+
+  /* Global Professional Styling */
+.card, .sidebar, .header {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 2px border on hover for interactive elements */
+.interactive-element:hover, 
+button:not(.no-hover-border):hover, 
+a.nav-link:hover,
+[class*="rounded-"]:not(.no-hover-border):hover,
+[class*="bg-white"]:not(.no-hover-border):hover,
+.card-hover:hover {
+  border: 2px solid #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Global rounded corners */
+.rounded-professional, [class*="rounded-"] {
+  border-radius: var(--radius-xl) !important;
+}
+}
+
+/* ── Requested Refinements (KEEPING THESE) ── */
+
+/* 2px Hover Border & 1.5rem Radius */
+button,
+input,
+select,
+textarea,
+.rounded-2xl,
+.rounded-3xl {
+  border: 2px solid transparent;
+  border-radius: 1.5rem !important;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+button:hover:not(:disabled),
+input:hover:not(:disabled),
+select:hover:not(:disabled),
+textarea:hover:not(:disabled) {
+  border-color: #1e40af !important;
+  border-width: 2px !important;
+  transform: translateY(-2px);
+  box-shadow: rgba(60, 64, 67, 0.35) 0px 4px 8px 0px, rgba(60, 64, 67, 0.2) 0px 6px 12px 4px !important;
+}
+
+input:focus:not(:disabled),
+textarea:focus:not(:disabled) {
+  border-color: #2563eb !important;
+  border-width: 2px !important;
+  transform: none !important;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1) !important;
+}
+
+/* Don't apply structural transform to nav links as it breaks scrolling layout */
+a.rounded-2xl:hover,
+div.rounded-2xl:hover,
+div.rounded-3xl:hover {
+  transform: none; /* Fixes jumpy sidebar */
+}
+
+/* ── Custom Utilities ── */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
