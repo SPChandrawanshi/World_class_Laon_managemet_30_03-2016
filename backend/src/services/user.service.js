@@ -69,6 +69,8 @@ const createUser = async (userData) => {
       password: hashedPassword,
       role: role || 'BORROWER',
       isVerified: true,
+      isApproved: true,
+      status: 'active',
       risk: risk || 'GREEN',
       businessName,
       nrc,

@@ -76,10 +76,7 @@ const login = async (req, res) => {
       return res.status(400).json({ success: false, message: 'Invalid credentials' });
     }
 
-    // Check if user is approved (Admin bypass)
-    if (!user.isApproved && user.role !== 'ADMIN') {
-      return res.status(403).json({ success: false, message: 'Your account is pending admin approval' });
-    }
+    // isApproved check removed — users can login; feature access is controlled per role
 
     const token = generateToken(user.id, user.role);
 
